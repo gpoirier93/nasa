@@ -1,0 +1,21 @@
+<h3 class="post-title">{{potd.title}}</h3>
+<div>
+  <h6 class="post-subtitle">{{potd.copyright}}  -  {{potd.date | date:'MMM dd yyyy'}}</h6>
+</div>
+<img src="{{potd.hdurl}}"/>
+<div id="post-description" class="post-description">{{potd.explanation}}</div>
+<h1 id="overflow">OVERFLOW</h1>
+<script>
+$(document).ready(function() {
+  makeMoreButtonVisible();
+});
+
+function makeMoreButtonVisible() {
+  var e = $('#post-description');
+  if (e.offsetWidth < e.scrollWidth) {
+    $("#overflow").show();
+  } else {
+    $("#overflow").hide();
+  }
+}
+</script>

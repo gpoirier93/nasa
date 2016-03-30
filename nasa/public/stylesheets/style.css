@@ -1,0 +1,21 @@
+a {
+  color: #00B7FF;
+}
+
+.post-title {
+  margin-bottom: 0rem;
+}
+
+.post-subtitle {
+  margin-bottom:1rem;
+  display:inline;
+  color: #BFBFBF;
+}
+
+.post-description {
+  word-wrap: break-word;
+  text-align:justify;
+  overflow: hidden;
+  /* 3X line-height */
+  max-height: 4.8em;
+}
