@@ -6,7 +6,8 @@ html
     link(rel='stylesheet', href='/stylesheets/normalize.css')
     link(rel='stylesheet', href='/stylesheets/skeleton.css')
     link(rel='stylesheet', href='/stylesheets/custom.css')
-
+    link(rel='stylesheet', href='/libs/font-awesome/css/font-awesome.min.css')
+      
   body(ng-app='nasa' class="has-docked-nav")
     br
     br
@@ -15,13 +16,15 @@ html
       div(class="container")
         ul(class="navbar-list")
           li(class="navbar-item") 
-            a(class="navbar-link") Connect
+            p(class="navbar-link") Astonomy picture of the day
+            //- a(class="navbar-link") 
     div(class="container")
-      div(class="row")
-          block content
+      block content
     div(style="height:10rem;")
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
     script(src='/libs/angular/angular.min.js')
+    script(src='/libs/ev-emitter/ev-emitter.js')
+    script(src='/libs/imagesloaded/imagesloaded.js')
     script(src='/libs/angular-route/angular-route.min.js')
     script(src='/javascripts/angularApp.js')
     script(src='/javascripts/services/potdFactory.js')

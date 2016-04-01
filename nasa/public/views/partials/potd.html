@@ -1,18 +1,58 @@
-<div>
-  <h3 class="post-title">{{potd.title}}</h3>
-  <div ng-if="potd.copyright != null">
-    <h6 class="post-subtitle">{{potd.copyright}}  -  {{potd.date}}</h6>
-  </div>
-  <div ng-if="potd.copyright == null">
-    <h6 class="post-subtitle">{{potd.date}}</h6>
-  </div>
-  <div ng-if="potd.mediaType == 'image'">
-      <img src="{{potd.hdurl}}"/>
-  </div>
-  <div ng-if="potd.mediaType == 'video'">
-    <div class="video-wrapper">
-      <iframe src={{trustedUrl}} title="{{potd.title}}" frameborder="0" allowfullscreen></iframe>
+<div class="row">
+  <div class="twelve columns">
+    <h3 class="post-title">{{potd.title}}</h3>
+    <div ng-if="potd.copyright != null">
+      <h6 class="post-subtitle">{{potd.copyright}}  -  {{potd.date}}</h6>
+    </div>
+    <div ng-if="potd.copyright == null">
+      <h6 class="post-subtitle">{{potd.date}}</h6>
     </div>
   </div>
-  <div class="post-description">{{potd.explanation}}</div>
 </div>
+<div class="row">
+  <div class="one column" style="text-align:left;">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-arrow-left fa-stack-1x fa-inverse"></i>
+    </span>
+  </div>
+  <div class="ten columns">
+    <div ng-if="potd.mediaType == 'image'">
+      <img class="media" src="{{potd.hdurl}}"/>
+    </div>
+    <div ng-if="potd.mediaType == 'video'">
+      <div class="video-wrapper media">
+        <iframe src={{trustedUrl}} title="{{potd.title}}" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="one column" style="text-align:right;vertical-align:bottom;">
+    <div class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-arrow-right fa-stack-1x fa-inverse"></i>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <div class="post-description">{{potd.explanation}}</div>
+  </div>
+</div>
+<script>
+$(function() {
+  console.log('yeaah');
+  $('.ten').imagesLoaded(function() {
+    console.log('yeah');
+    adjustArrowDivSize();
+  });
+})
+$(window).resize(function() {
+  adjustArrowDivSize();
+});
+
+function adjustArrowDivSize() {
+  $('.one').height($('.media').height());
+  var margin = $('.media').height() / 2 - 20;
+  $('.fa-stack').css('margin-top', margin+'px');
+}
+</script>
