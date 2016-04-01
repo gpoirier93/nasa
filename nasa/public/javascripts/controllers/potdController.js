@@ -1,5 +1,6 @@
-app.controller('PotdCtrl', ['$scope', '$log','potdList', function($scope, $log, potdList) {
-  $scope.title = 'nasa';
-  $log.log(potdList);
-  $scope.potdList = potdList;
+app.controller('PotdCtrl', ['$scope', '$log','potd','$sce', function($scope, $log, potd, $sce) {
+  $scope.potd = potd;
+  if (potd.url) {
+    $scope.trustedUrl = $sce.trustAsResourceUrl(potd.url);
+  }
 }]);

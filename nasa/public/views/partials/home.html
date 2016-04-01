@@ -1,3 +1,5 @@
-<div ng-repeat="potd in potdList">
-  <div ng-include="'/views/partials/potd.html'"/>
+<div>
+  <div ng-repeat="potd in potdList | orderBy: '-date'">
+    <div ng-include="'/views/partials/potdThumbnail.html'"/>
+  </div>
 </div>

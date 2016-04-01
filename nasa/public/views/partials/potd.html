@@ -1,21 +1,18 @@
-<h3 class="post-title">{{potd.title}}</h3>
 <div>
-  <h6 class="post-subtitle">{{potd.copyright}}  -  {{potd.date | date:'MMM dd yyyy'}}</h6>
+  <h3 class="post-title">{{potd.title}}</h3>
+  <div ng-if="potd.copyright != null">
+    <h6 class="post-subtitle">{{potd.copyright}}  -  {{potd.date}}</h6>
+  </div>
+  <div ng-if="potd.copyright == null">
+    <h6 class="post-subtitle">{{potd.date}}</h6>
+  </div>
+  <div ng-if="potd.mediaType == 'image'">
+      <img src="{{potd.hdurl}}"/>
+  </div>
+  <div ng-if="potd.mediaType == 'video'">
+    <div class="two-thirds column">
+      <iframe src={{trustedUrl}} title="{{potd.title}}" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="post-description">{{potd.explanation}}</div>
 </div>
-<img src="{{potd.hdurl}}"/>
-<div id="post-description" class="post-description">{{potd.explanation}}</div>
-<h1 id="overflow">OVERFLOW</h1>
-<script>
-$(document).ready(function() {
-  makeMoreButtonVisible();
-});
-
-function makeMoreButtonVisible() {
-  var e = $('#post-description');
-  if (e.offsetWidth < e.scrollWidth) {
-    $("#overflow").show();
-  } else {
-    $("#overflow").hide();
-  }
-}
-</script>

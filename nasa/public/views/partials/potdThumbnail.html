@@ -1,0 +1,28 @@
+<a href="/potd/{{potd.date}}" style="color:#000000">
+  <div class="one-third column thumbnail-container">
+    <div class="hover">
+      <div ng-if="potd.mediaType == 'image'">
+        <img src="{{potd.url}}" class="thumbnail"/>
+      </div>
+      <div ng-if="potd.mediaType == 'video'">
+        <img src="../../images/icon-nasa.png" class="thumbnail"/>
+      </div>
+      <div class="thumbnail-text">
+        <div class="thumbnail-text-div"><h6>{{potd.title}}</br>{{potd.date}}</h6></div>
+      </div>
+    </div>
+  </div>
+</a>
+<script>
+  $(document).ready(function() {
+    adjustThumbnailSize();
+  });
+  $(window).resize(function() {
+    adjustThumbnailSize();
+  });
+  function adjustThumbnailSize() {
+    var containerWidth = $('.thumbnail-container').width();
+    $('.thumbnail').width(containerWidth-6).height(containerWidth-6);
+    $('.thumbnail-container').height(containerWidth);
+  }
+</script>

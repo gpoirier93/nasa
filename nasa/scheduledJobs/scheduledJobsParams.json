@@ -1,0 +1,11 @@
+[
+  {
+    "name": "potdScheduledJob",
+    "ruleType": "recurrent",
+    "ruleParams": {
+        "hours":"1",
+        "minutes":"0",
+        "seconds":"-1"
+    }
+  }
+]
