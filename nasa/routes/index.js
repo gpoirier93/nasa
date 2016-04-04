@@ -19,12 +19,17 @@ router.get('/api/v1/potd/:date?', function(req, res, next) {
         date: req.params.date
       }
     }).then(function(potds) {
-      console.log('yeah')
       return res.json(potds);
     });
   } else {
-    models.potd.findAll().then(function(potds) {
-      console.log('yeah')
+    var offset = req.query.offset;
+    console.log(offset);
+    var limit = 30;
+    models.potd.findAll({
+      offset: offset,
+      limit: limit,
+      order: [['date', 'DESC']]
+    }).then(function(potds) {
       return res.json(potds);
     });
   }

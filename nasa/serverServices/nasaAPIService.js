@@ -7,8 +7,10 @@ module.exports = {
     if (date) {
       var year = date.getFullYear();
       var month = date.getMonth() + 1;
+      var monthFormatted = ('0'+month).substring(month.toString().length-1,month.toString().length+1);
       var day = date.getDate();
-      dateParam = year+"-"+month+"-"+day;
+      var dayFormatted = ('0'+day).substring(day.toString().length-1,day.toString().length+1);
+      dateParam = year+"-"+monthFormatted+"-"+dayFormatted;
       url  = "https://api.nasa.gov/planetary/apod?api_key="+apiKey+"&date="+dateParam;
     } else {
       url = "https://api.nasa.gov/planetary/apod?api_key="+apiKey;

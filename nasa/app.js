@@ -10,6 +10,7 @@ var users = require('./routes/users');
 
 require('./serverServices/nasaAPIService.js');
 require('./scheduledJobs/scheduledJobs.js');
+require('./scheduledJobs/bulkInsertPotd.js');
 
 var app = express();
 

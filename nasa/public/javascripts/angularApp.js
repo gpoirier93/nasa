@@ -6,8 +6,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
             templateUrl: '../views/partials/home.html',
             controller: 'HomeCtrl',
             resolve: {
-              potdList: function(potdFactory) {
-                return potdFactory.getAll();
+              potdList: function(potdFactory, $log) {
+                return potdFactory.getPotds();
               }
             }
         }).when('/potd/:date', {

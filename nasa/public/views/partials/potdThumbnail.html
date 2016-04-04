@@ -15,6 +15,10 @@
 </a>
 <script>
   $(document).ready(function() {
+    // console.log(angular.element('.thumbnail-container').scope());
+    $('.thumbnail-container').imagesLoaded(function() {
+      adjustTextMargin();
+    })
     adjustThumbnailSize();
   });
   $(window).resize(function() {
@@ -24,5 +28,11 @@
     var containerWidth = $('.thumbnail-container').width();
     $('.thumbnail').width(containerWidth-6).height(containerWidth-6);
     $('.thumbnail-container').height(containerWidth);
+  }
+  function adjustTextMargin() {
+    var margin = ($('.thumbnail').height() - $('.thumbnail-text-div').height()) / 2;
+    if (margin >= 0) {
+      $('.thumbnail-text-div').css('margin-top', margin+'px');
+    }
   }
 </script>

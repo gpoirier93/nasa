@@ -2,6 +2,7 @@ app.factory('potdFactory',['$http', '$log', function($http, $log) {
   var factory = {
     potds:[]
   };
+
   factory.getPotdByDate = function(date) {
     var potd;
     if (this.potds.length > 0) {
@@ -20,14 +21,44 @@ app.factory('potdFactory',['$http', '$log', function($http, $log) {
       })
     }
   };
-  factory.getAll = function() {
-    return $http.get('/api/v1/potd').then(function(response) {
-      $log.log(response.data);
-      if (response.data) {
-        angular.copy(response.data, factory.potds);
-        return response.data;
+  factory.getPotds = function(callback) {
+    // if called with a callback, we want the values to append to existing ones
+    if (callback) {
+      var offset;
+      if (factory.potds.length > 0) {
+        offset = factory.potds.length;
+        $log.log(offset);
+      } else {
+        offset = 0;
+        $log.log('no offst');
       }
-    });
+
+      $http.get('/api/v1/potd?offset='+offset).then(function(response) {
+        if (response.data) {
+          if (factory.potds.length > 0) {
+            factory.potds = factory.potds.concat(response.data);
+          } else {
+            angular.copy(response.data, factory.potds);
+          }
+          callback(response.data);
+        }
+      });
+    } else {
+      if (factory.potds.length > 0) {
+        return factory.potds;
+      } else {
+        return $http.get('/api/v1/potd?offset=0').then(function(response) {
+          if (response.data) {
+            if (factory.potds.length > 0) {
+              factory.potds = factory.potds.concat(response.data);
+            } else {
+              angular.copy(response.data, factory.potds);
+            }
+            return response.data;
+          }
+        });
+      }
+    }
   }
 
   return factory;
