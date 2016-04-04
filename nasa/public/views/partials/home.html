@@ -10,12 +10,22 @@
   </div>
   <div class="row">
     <div class="twelve columns" style="text-align:center;">
-      <button style="width:50%" ng-click="getMorePotds()" style="">More</button>
+      <button role="button" class="button-primary" style="width:50%" ng-click="getMorePotds()">More</button>
     </div>
   </div>
   <div class="row">
     <div class="twelve columns" style="text-align:center;">
-      <i class="fa fa-circle-o-notch fa-spin fa-3x" ng-show="isLoading"></i>
+      <span class="mif-spinner2 mif-ani-spin mif-3x" ng-show="isLoading"></i>
     </div>
   </div>
 </div>
+<script>
+$(function() {
+  $(".button-primary").mouseup(function() {
+    $(this).blur();
+  })
+  $(".button").mouseup(function() {
+    $(this).blur();
+  })
+})
+</script>

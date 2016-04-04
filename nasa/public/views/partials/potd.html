@@ -1,41 +1,41 @@
-<div class="row">
-  <div class="twelve columns">
-    <h3 class="post-title">{{potd.title}}</h3>
-    <div ng-if="potd.copyright != null">
-      <h6 class="post-subtitle">{{potd.copyright}}  -  {{potd.date}}</h6>
-    </div>
-    <div ng-if="potd.copyright == null">
-      <h6 class="post-subtitle">{{potd.date}}</h6>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="one column" style="text-align:left;">
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-arrow-left fa-stack-1x fa-inverse"></i>
-    </span>
-  </div>
-  <div class="ten columns">
-    <div ng-if="potd.mediaType == 'image'">
-      <img class="media" src="{{potd.url}}"/>
-    </div>
-    <div ng-if="potd.mediaType == 'video'">
-      <div class="video-wrapper">
-        <iframe class="media" src={{trustedUrl}} title="{{potd.title}}" frameborder="0" allowfullscreen></iframe>
+<div class="container-div">
+  <div class="row">
+    <div class="twelve columns">
+      <h3 class="post-title">{{potd.title}}</h3>
+      <div ng-if="potd.copyright != null">
+        <h6 class="post-subtitle">{{potd.copyright}}  -  {{potd.date}}</h6>
+      </div>
+      <div ng-if="potd.copyright == null">
+        <h6 class="post-subtitle">{{potd.date}}</h6>
       </div>
     </div>
   </div>
-  <div class="one column" style="text-align:right;">
-    <div class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-arrow-right fa-stack-1x fa-inverse"></i>
+  <div class="row">
+    <div class="one column" style="text-align:left;">
+      <button class="button" ng-click="previousPotd()" style="padding-left:10px;padding-right:10px">
+        <span class="mif-chevron-left mif-3x"></span>
+      </button>
+    </div>
+    <div class="ten columns">
+      <div ng-if="potd.mediaType == 'image'">
+        <img class="media" src="{{potd.url}}"/>
+      </div>
+      <div ng-if="potd.mediaType == 'video'">
+        <div class="video-wrapper">
+          <iframe class="media" src={{trustedUrl}} title="{{potd.title}}" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="one column" style="text-align:right;">
+      <button class="button" ng-click="nextPotd()" style="padding-left:10px;padding-right:10px">
+        <span class="mif-chevron-right mif-3x"></span>
+      </button>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="twelve columns">
-    <div class="post-description">{{potd.explanation}}</div>
+  <div class="row">
+    <div class="twelve columns">
+      <div class="post-description">{{potd.explanation}}</div>
+    </div>
   </div>
 </div>
 <script>
@@ -43,14 +43,28 @@ $(function() {
   $('.ten').imagesLoaded(function() {
     adjustArrowDivSize();
   });
-})
+  $(".button").mouseup(function() {
+    $(this).blur();
+  });
+  $("body").keydown(function(e) {
+    switch(e.which) {
+      case 37: // left
+        angular.element('.container-div').scope().previousPotd();
+      break;
+      case 39: // right
+        angular.element('.container-div').scope().nextPotd();
+      break;
+      default: return; // exit this handler for other keys
+    }
+    e.preventDefault(); // prevent the default action (scroll / move caret)
+  });
+});
 $(window).resize(function() {
   adjustArrowDivSize();
 });
-
 function adjustArrowDivSize() {
   $('.one').height($('.media').height());
   var margin = $('.media').height() / 2 - 20;
-  $('.fa-stack').css('margin-top', margin+'px');
+  $('.button').css('margin-top', margin+'px');
 }
 </script>

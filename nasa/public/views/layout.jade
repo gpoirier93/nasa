@@ -6,7 +6,7 @@ html
     link(rel='stylesheet', href='/stylesheets/normalize.css')
     link(rel='stylesheet', href='/stylesheets/skeleton.css')
     link(rel='stylesheet', href='/stylesheets/custom.css')
-    link(rel='stylesheet', href='/libs/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/libs/metro-dist/css/metro-icons.min.css')
       
   body(ng-app='nasa' class="has-docked-nav")
     br
@@ -21,13 +21,15 @@ html
       block content
     div(style="height:3.2rem")
     footer(style="border-top: 1px solid #eee;")
-      p(class="navbar-link" style="text-align:center;") ASTRONOMY PICTURE OF THE DAY
+      //- p(class="navbar-link") ASTRONOMY PICTURE OF THE DAY
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
     script(src='/libs/angular/angular.min.js')
     script(src='/libs/ev-emitter/ev-emitter.js')
     script(src='/libs/imagesloaded/imagesloaded.js')
     script(src='/libs/angular-route/angular-route.min.js')
     script(src='/javascripts/angularApp.js')
-    script(src='/javascripts/services/potdFactory.js')
+    script(src='/javascripts/services/potds/potdFactory.js')
+    script(src='/javascripts/services/potds/potdServiceHelper.js')
     script(src='/javascripts/controllers/potdController.js')
     script(src='/javascripts/controllers/homeController.js')
+      

@@ -2,10 +2,10 @@
   "name": "nasa",
   "version": "1.0.0",
   "dependencies": {
-    "font-awesome": "latest",
     "animate.css": "latest",
     "angular": "latest",
     "angular-route": "latest",
-    "imagesloaded": "^4.1.0"
+    "imagesloaded": "^4.1.0",
+    "metro-dist": "^3.0.14"
   }
 }

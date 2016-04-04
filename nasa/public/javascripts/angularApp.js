@@ -7,7 +7,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
             controller: 'HomeCtrl',
             resolve: {
               potdList: function(potdFactory, $log) {
-                return potdFactory.getPotds();
+                return potdFactory.getInitialPotds();
               }
             }
         }).when('/potd/:date', {
