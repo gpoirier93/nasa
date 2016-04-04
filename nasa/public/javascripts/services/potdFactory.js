@@ -27,10 +27,8 @@ app.factory('potdFactory',['$http', '$log', function($http, $log) {
       var offset;
       if (factory.potds.length > 0) {
         offset = factory.potds.length;
-        $log.log(offset);
       } else {
         offset = 0;
-        $log.log('no offst');
       }
 
       $http.get('/api/v1/potd?offset='+offset).then(function(response) {
